@@ -6,6 +6,8 @@ Makefile.in
 /py-compile
 /test-driver
 /ylwrap
+__pycache__
+tciaclient.py
 
 # http://www.gnu.org/software/autoconf
 
