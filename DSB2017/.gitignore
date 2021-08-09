@@ -1,4 +1,3 @@
 *.pyc
-*.ipynb*
 training/.flag*
-prediction*.csv
+__pycache__
