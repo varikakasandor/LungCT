@@ -103,8 +103,8 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         np.save(os.path.join(prep_folder,name+'_clean'),sliceim)
         np.save(os.path.join(prep_folder,name+'_label'),np.array([[0,0,0,0]]))
     except:
-        print('bug in '+name)
-        raise
+        print(f"There is a bug in {name}, but it is ignored!")
+        #raise
     print(name+' done')
 
     
