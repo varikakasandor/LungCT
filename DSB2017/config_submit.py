@@ -9,6 +9,6 @@ config = {
     'n_gpu':10, #Too big would run out of CUDA memory
     'n_worker_preprocessing':60,
     'use_exsiting_preprocessing':True,
-    'skip_preprocessing': True,
+    'skip_preprocessing': False, #If the _clean and _label files are already present, then can be set to True
     'skip_detect': True
 }
