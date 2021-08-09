@@ -17,16 +17,20 @@ from torch.autograd import Variable
 
 from layers import acc
 
-def test_detect(data_loader, net, get_pbb, save_dir, config,n_gpu):
+def test_detect(data_loader, net, get_pbb, save_dir, config, n_gpu, use_existing):
     start_time = time.time()
     net.eval()
     split_comber = data_loader.dataset.split_comber
     for i_name, (data, target, coord, nzhw) in enumerate(data_loader):
+        shortname = data_loader.dataset.filenames[i_name][-24:-10]
+        if use_existing:
+            if os.path.exists(os.path.join(save_dir, shortname+'_pbb.npy')) and os.path.exists(os.path.join(save_dir, shortname+'_lbb.npy')):
+                print(f"{shortname} already existed, so skipped.")
+                continue
         s = time.time()
         target = [np.asarray(t, np.float32) for t in target]
         lbb = target[0]
         nzhw = nzhw[0]
-        shortname = data_loader.dataset.filenames[i_name][-24:-10]
         data = data[0][0]
         coord = coord[0][0]
         isfeat = False
@@ -67,7 +71,7 @@ def test_detect(data_loader, net, get_pbb, save_dir, config,n_gpu):
             np.save(os.path.join(save_dir, shortname+'_feature.npy'), feature_selected)
         #tp,fp,fn,_ = acc(pbb,lbb,0,0.1,0.1)
         #print([len(tp),len(fp),len(fn)])
-        print(f"Finished ct {shortname} number {i_name}")
+        print(f"Finished CT {shortname} number {i_name}")
         #print([i_name,shortname])
         e = time.time()
         

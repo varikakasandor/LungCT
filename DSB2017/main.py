@@ -65,7 +65,7 @@ if not skip_detect:
     test_loader = DataLoader(dataset,batch_size = 1,
         shuffle = False,num_workers = 32,pin_memory=False,collate_fn =collate)
 
-    test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'])
+    test_detect(test_loader, nod_net, get_pbb, bbox_result_path,config1,n_gpu=config_submit['n_gpu'],use_existing=config_submit['use_exsiting_detection'])
 
     
 print("Detection done.")
