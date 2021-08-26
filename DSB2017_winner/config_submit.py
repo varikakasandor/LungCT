@@ -1,5 +1,5 @@
 config = {
-    'datapath':'/mnt/idms/PROJECTS/Lung/LIDC-IDRI-Unzipped',
+    'datapath':'/mnt/idms/PROJECTS/Lung/LIDC-IDRI',
     'preprocess_result_path':'/mnt/idms/PROJECTS/Lung/LungCT/DSB2017/prep_result/',
     'outputfile':'/mnt/idms/PROJECTS/Lung/LungCT/DSB2017/prediction.csv',
     'detector_model':'net_detector',
