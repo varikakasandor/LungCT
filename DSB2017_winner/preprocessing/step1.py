@@ -27,7 +27,9 @@ def load_scan(path):
         
     for s in slices:
         s.SliceThickness = slice_thickness
-        
+    
+    #print(slice_thickness, slices[0].SliceLocation, slices[1].SliceLocation, slices[0].PixelSpacing, slices[1].PixelSpacing)
+    
     return slices
 
 def get_pixels_hu(slices):

@@ -24,6 +24,7 @@ datapath = config_submit['datapath']
 prep_result_path = config_submit['preprocess_result_path']
 skip_prep = config_submit['skip_preprocessing']
 skip_detect = config_submit['skip_detect']
+bbox_result_path = config_submit['bbox_result_path']
 
 if not skip_prep:
     testsplit = full_prep(datapath,prep_result_path,
@@ -50,7 +51,7 @@ nod_net = DataParallel(nod_net)
 
 print("Model loaded.")
 
-bbox_result_path = './bbox_result'
+
 if not os.path.exists(bbox_result_path):
     os.mkdir(bbox_result_path)
 #testsplit = [f.split('_clean')[0] for f in os.listdir(prep_result_path) if '_clean' in f]
