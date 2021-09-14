@@ -117,6 +117,7 @@ def full_prep(data_path,prep_folder,n_worker = None,use_existing=True):
     print('starting preprocessing')
     pool = Pool(n_worker)
     filelist = [f for f in os.listdir(data_path)]
+    #print(f"Filelist={filelist}")
     partial_savenpy = partial(savenpy,filelist=filelist,prep_folder=prep_folder,
                               data_path=data_path,use_existing=use_existing)
 
