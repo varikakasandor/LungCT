@@ -13,11 +13,10 @@ This is my configuration, I am not sure about the compatability of other version
 # Instructions for runing
 
 Testing
-1.	unzip the stage 2 data 
-2.	go to root folder
-3.	open config_submit.py, filling in datapath with the stage 2 data path
-4.	python main.py
-5.	get the results from prediction.csv
+1.	go to root folder
+2.	open config_submit.py, filling in the paths for inputs and outputs
+3.	python main.py
+4.	get the results from prediction.csv
 
 if you have bug about short of memory, set the 'n_worker_preprocessing' in config\_submit.py to a int that is smaller than your core number.
 
