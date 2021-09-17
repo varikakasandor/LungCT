@@ -68,17 +68,27 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
     try:
         print(f"{prep_folder}{name} HAS JUST STARTED")
         im, m1, m2, spacing = step1_python(os.path.join(data_path,name))
+        print("STEP 1")
         Mask = m1+m2
-        
-        newshape = np.round(np.array(Mask.shape)*spacing/resolution)
-        xx,yy,zz= np.where(Mask)
-        box = np.array([[np.min(xx),np.max(xx)],[np.min(yy),np.max(yy)],[np.min(zz),np.max(zz)]])
-        box = box*np.expand_dims(spacing,1)/np.expand_dims(resolution,1)
-        box = np.floor(box).astype('int')
-        margin = 5
-        extendbox = np.vstack([np.max([[0,0,0],box[:,0]-margin],0),np.min([newshape,box[:,1]+2*margin],axis=0).T]).T
-        extendbox = extendbox.astype('int')
+        print("STEP 2")
 
+        newshape = np.round(np.array(Mask.shape)*spacing/resolution)
+        print("STEP 3")
+        xx,yy,zz= np.where(Mask)
+        print("STEP 4")
+        print(np.unique(Mask))
+        box = np.array([[np.min(xx),np.max(xx)],[np.min(yy),np.max(yy)],[np.min(zz),np.max(zz)]])
+        print("STEP 5")
+        box = box*np.expand_dims(spacing,1)/np.expand_dims(resolution,1)
+        print("STEP 6")
+        box = np.floor(box).astype('int')
+        print("STEP 7")
+        margin = 5
+        print("STEP 8")
+        extendbox = np.vstack([np.max([[0,0,0],box[:,0]-margin],0),np.min([newshape,box[:,1]+2*margin],axis=0).T]).T
+        print("STEP 9")
+        extendbox = extendbox.astype('int')
+        print("STEP 10")
 
         convex_mask = m1
         dm1 = process_mask(m1)
@@ -94,15 +104,18 @@ def savenpy(id,filelist,prep_folder,data_path,use_existing=True):
         sliceim = sliceim*dilatedMask+pad_value*(1-dilatedMask).astype('uint8')
         bones = sliceim*extramask>bone_thresh
         sliceim[bones] = pad_value
+        print(sliceim.shape, id)
         sliceim1,_ = resample(sliceim,spacing,resolution,order=1)
         sliceim2 = sliceim1[extendbox[0,0]:extendbox[0,1],
                     extendbox[1,0]:extendbox[1,1],
                     extendbox[2,0]:extendbox[2,1]]
         sliceim = sliceim2[np.newaxis,...]
+        print(sliceim.shape, id)
         print(f"{prep_folder}/{name} IS BEING SAVED")
         np.save(os.path.join(prep_folder,name+'_clean'),sliceim)
         np.save(os.path.join(prep_folder,name+'_label'),np.array([[0,0,0,0]]))
-    except:
+    except Exception as e:
+        print(e)
         print(f"There is a bug in {name}, so it is ignored!")
         #raise
     print(name+' done')
