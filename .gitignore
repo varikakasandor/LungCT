@@ -1,6 +1,7 @@
-# http://www.gnu.org/software/automake
+*.ipynb_checkpoints
 /DSB2017\ Winner\ Cancer\ Classifier/prep_result/*
 /DSB2017\ Winner\ Cancer\ Classifier/bbox_result/*
+# http://www.gnu.org/software/automak 
 Makefile.in
 /ar-lib
 /mdate-sh
@@ -8,7 +9,6 @@ Makefile.in
 /test-driver
 /ylwrap
 __pycache__
-tciaclient.py
 
 # http://www.gnu.org/software/autoconf
 
