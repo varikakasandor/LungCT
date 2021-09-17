@@ -4,9 +4,9 @@ config = {
     'bbox_result_path':'/mnt/idms/home/andor/bbox_result/',
     'outputfile':'/mnt/idms/home/andor/prediction-super.csv',
     'detector_model':'net_detector',
-    'detector_param':'/mnt/idms/PROJECTS/Lung/LungCT/DSB2017_winner/model/detector.ckpt',
+    'detector_param':'/mnt/idms/PROJECTS/Lung/LungCT Git/DSB2017_winner/model/detector.ckpt',
     'classifier_model':'net_classifier',
-    'classifier_param':'/mnt/idms/PROJECTS/Lung/LungCT/DSB2017_winner/model/classifier.ckpt',
+    'classifier_param':'/mnt/idms/PROJECTS/Lung/LungCT Git/DSB2017_winner/model/classifier.ckpt',
     'n_gpu':10, #Too big would run out of CUDA memory
     'n_worker_preprocessing':10,
     'use_exsiting_preprocessing':True,#False,
